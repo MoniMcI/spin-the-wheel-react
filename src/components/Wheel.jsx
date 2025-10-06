@@ -184,6 +184,7 @@ export default function Wheel({
         role="img"
         aria-label="Prize wheel"
         tabIndex={0}
+        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/50"
         onKeyDown={(e) => {
           // allow Enter/Space to trigger spin
           if ((e.key === "Enter" || e.key === " ") && !spinning) {
@@ -197,6 +198,10 @@ export default function Wheel({
         style={{
           transform: `rotate(${rotation}deg)`,
           transition: `transform ${animationMs}ms ease-out`,
+          outline: "none",
+          transformOrigin: "50% 50%",
+          transformBox: "fill-box",
+          pointerEvents: "none", // allow clicks to pass through to button below
         }}
       >
         {items.map((p, i) => {
